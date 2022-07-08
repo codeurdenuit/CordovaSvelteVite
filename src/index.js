@@ -1,10 +1,8 @@
 import Svelte from './component/app.svelte';
 
-document.addEventListener('deviceready', onDeviceReady, false);
-
-function onDeviceReady() {
-  console.log('Running cordova-' + cordova.platformId + '@' + cordova.version);
-}
+document.addEventListener('deviceready', () => {
+  console.log('RUNNING CORDOVA-' + cordova.platformId + '@' + cordova.version);
+}, false);
 
 new Svelte({
   target: document.body,

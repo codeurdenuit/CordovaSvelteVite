@@ -8,4 +8,9 @@
     <content src="index.html" />
     <allow-intent href="http://*/*" />
     <allow-intent href="https://*/*" />
+    <access origin="cdvfile://*" />
+    <preference name="AndroidPersistentFileLocation" value="Compatibility" />
+    <preference name="allowFileAccessFromFileURLs" value="true" />
+    <preference name="allowUniversalAccessFromFileURLs" value="true" />
+    <preference name="scheme" value="cdvfile" />
 </widget>

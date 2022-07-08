@@ -11,8 +11,9 @@ module.exports = {
     'ecmaVersion': 'latest',
     'sourceType': 'module',
   },
-  'ignorePatterns': ['www/**/*'],
+  'ignorePatterns': ['www/**/*', 'cordova*'],
   'rules': {
     'require-jsdoc': 0,
+    'max-len': ['error', 120, 2],
   },
 };

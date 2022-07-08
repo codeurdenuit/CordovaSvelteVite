@@ -5,12 +5,11 @@
   "description": "Poc",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "vite",
     "build": "vite build",
-    "electron": "vite build && node  fixCordovaVite.js && cordova build electron",
-    "android": "vite build && node  fixCordovaVite.js && cordova build android",
-    "lint": "eslint src public"
+    "dev": "vite",
+    "electron_dev": "vite build && node postbuild.js dev && cordova build electron",
+    "electron_prod": "vite build && node postbuild.js prod && cordova build electron",
+    "android_prod": "vite build && node  postbuild.js prod && cordova build android"
   },
   "keywords": [
     "ecosystem:cordova"
@@ -19,28 +18,32 @@
   "license": "Apache-2.0",
   "devDependencies": {
     "cordova-android": "^10.1.2",
+    "cordova-browser": "^6.0.0",
     "cordova-electron": "^3.1.0",
     "cordova-plugin-file": "^7.0.0",
     "cordova-plugin-file-transfer": "^1.7.1",
     "eslint": "^8.19.0",
-    "eslint-config-google": "^0.14.0"
+    "eslint-config-google": "^0.14.0",
+    "sass": "^1.53.0"
   },
   "cordova": {
     "platforms": [
       "android",
-      "electron"
+      "electron",
+      "browser"
     ],
     "plugins": {
-      "cordova-plugin-file": {
-        "ANDROIDX_WEBKIT_VERSION": "1.4.0"
-      },
+      "cordova-plugin-file": {},
       "cordova-plugin-file-transfer": {
         "ANDROIDX_WEBKIT_VERSION": "1.4.0"
       }
     }
   },
   "dependencies": {
+    "@sveltejs/vite-plugin-svelte": "^1.0.0-next.49",
     "jszip": "^3.10.0",
+    "node-sass": "^7.0.1",
+    "svelte-preprocess": "^4.10.7",
     "vite": "^2.9.13"
   }
 }
