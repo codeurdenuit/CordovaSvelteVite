@@ -1,0 +1,46 @@
+{
+  "name": "io.cordova.hellocordova",
+  "displayName": "HelloCordova",
+  "version": "0.0.1",
+  "description": "Poc",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "vite",
+    "build": "vite build",
+    "electron": "vite build && node  fixCordovaVite.js && cordova build electron",
+    "android": "vite build && node  fixCordovaVite.js && cordova build android",
+    "lint": "eslint src public"
+  },
+  "keywords": [
+    "ecosystem:cordova"
+  ],
+  "author": "codeur de nuit",
+  "license": "Apache-2.0",
+  "devDependencies": {
+    "cordova-android": "^10.1.2",
+    "cordova-electron": "^3.1.0",
+    "cordova-plugin-file": "^7.0.0",
+    "cordova-plugin-file-transfer": "^1.7.1",
+    "eslint": "^8.19.0",
+    "eslint-config-google": "^0.14.0"
+  },
+  "cordova": {
+    "platforms": [
+      "android",
+      "electron"
+    ],
+    "plugins": {
+      "cordova-plugin-file": {
+        "ANDROIDX_WEBKIT_VERSION": "1.4.0"
+      },
+      "cordova-plugin-file-transfer": {
+        "ANDROIDX_WEBKIT_VERSION": "1.4.0"
+      }
+    }
+  },
+  "dependencies": {
+    "jszip": "^3.10.0",
+    "vite": "^2.9.13"
+  }
+}
