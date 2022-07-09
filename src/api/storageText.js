@@ -4,39 +4,16 @@ window.requestFileSystem = window.requestFileSystem || window.webkitRequestFileS
 // https://web.dev/file-system-access
 
 export default {
-  async dirDirectory(path) {
-    console.log('dirDirectory : ', path);
-    const fs = await this._requestFileSystem();
-    const directoryEntry = await this._getDirectory(fs.root, path, {create: true});
-    const result = await this._readEntries(directoryEntry);
-    console.log(result);
-    return result;
-  },
 
-  async creatFile(path, name, value) {
-    console.log('creatFile : ', path, name, value);
-    const fs = await this._requestFileSystem();
-    const directoryEntry = await this._getDirectory(fs.root, path, {create: true});
-    const fileEntry = await this._getFile(directoryEntry, name, {create: true, exclusive: false});
-    const writer = await this._createWriter(fileEntry);
-    await this._writer(writer, value);
-  },
-
-  async readFile(path, name, value) {
-    console.log('readFile : ', path, name);
-    const fs = await this._requestFileSystem();
-    const directoryEntry = await this._getDirectory(fs.root, path, {create: false});
-    const fileEntry = await this._getFile(directoryEntry, name, {create: false});
-    const file = await this._file(fileEntry);
+  async loadFileText(path, name) {
+    console.log('loadText : ', path, name);
+    const file = await this.loadFile(path, name);
     return await this._readAsText(file);
   },
 
-  async remove(path, name) {
-    console.log('removeFile : ', path, name);
-    const fs = await this._requestFileSystem();
-    const directoryEntry = await this._getDirectory(fs.root, path, {create: false});
-    const fileEntry = await this._getFile(directoryEntry, name, {create: false});
-    return await this._remove(fileEntry);
+  async creatFileText(path, name, file) {
+    console.log('creatFileText : ', path, name);
+    return await creatFile(path, name, file, 'text/plain');
   },
 
   _readAsText(file) {

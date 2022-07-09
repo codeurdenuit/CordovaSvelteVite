@@ -3,6 +3,40 @@ import storageText from './storageText';
 
 const root = {
 
+  async dirDirectory(path) {
+    console.log('dirDirectory : ', path);
+    const fs = await this._requestFileSystem();
+    const directoryEntry = await this._getDirectory(fs.root, path, {create: true});
+    const result = await this._readEntries(directoryEntry);
+    console.log(result);
+    return result;
+  },
+
+  async creatFile(path, name, file, type) {
+    console.log('creatFile : ', path, name, file);
+    const fs = await this._requestFileSystem();
+    const directoryEntry = await this._getDirectory(fs.root, path, {create: true});
+    const fileEntry = await this._getFile(directoryEntry, name, {create: true, exclusive: false});
+    const writer = await this._createWriter(fileEntry);
+    await this._writer(writer, file, {type});
+  },
+
+  async loadFile(path, name) {
+    console.log('readFile : ', path, name);
+    const fs = await this._requestFileSystem();
+    const directoryEntry = await this._getDirectory(fs.root, path, {create: false});
+    const fileEntry = await this._getFile(directoryEntry, name, {create: false});
+    return await this._file(fileEntry);
+  },
+
+  async removeFile(path, name) {
+    console.log('removeFile : ', path, name);
+    const fs = await this._requestFileSystem();
+    const directoryEntry = await this._getDirectory(fs.root, path, {create: false});
+    const fileEntry = await this._getFile(directoryEntry, name, {create: false});
+    return await this._remove(fileEntry);
+  },
+
   _requestFileSystem() {
     return new Promise((resolve, reject) => {
       window.requestFileSystem(window.PERSISTENT, 5*1024*1024, resolve, reject);
@@ -34,7 +68,7 @@ const root = {
     });
   },
 
-  _writer(writer, value) {
+  _writer(writer, file, type) {
     return new Promise((resolve, reject) => {
       writer.onwriteend = function(e) {
         console.log('Write completed.');
@@ -44,7 +78,7 @@ const root = {
         console.log('Write failed: ' + e.toString());
         reject(e);
       };
-      const blob = new Blob([value], {type: 'text/plain'});
+      const blob = new Blob([file], type);
       writer.write(blob);
     });
   },

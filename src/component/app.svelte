@@ -12,6 +12,7 @@
 	.poc {
 		border: solid 1px;
 		padding: 1rem;
+		margin-bottom: 1rem;
 		&__block {
 			background-color: gray;
 			padding: 1rem;

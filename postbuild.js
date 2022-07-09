@@ -4,9 +4,9 @@ fs.readFile('./www/index.html', 'utf8', (err, data) => {
     console.log(`Postbuild Cordova failed: ${err}`);
   } else {
     const mode = process.argv.slice(2)[0];
-    const pathScript = mode === 'dev' ? 'http://localhost:3000/index.js': './index.js';
+    const path = mode === 'dev' ? 'http://localhost:3000/': './';
     console.log('postbuild mode ', mode);
-    data = data.replace('/index.js', pathScript);
+    data = data.replace('/index.js', path+ 'index.js');
   }
   fs.writeFile('./www/index.html', data, 'utf8', (err) => {
     if (err) {

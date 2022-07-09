@@ -13,6 +13,7 @@ export default defineConfig({
       output: {
         manualChunks: {},
         entryFileNames: '[name].js',
+        assetFileNames: '[name].css',
       },
     },
   },

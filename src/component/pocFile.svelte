@@ -14,17 +14,17 @@
   }
 
   async function onClickWrite() {
-    await api.creatFile(dirName, fileName, fileValue);
+    await api.creatFileText(dirName, fileName, fileValue);
     fileValue = '';
     fileName = '';
   }
 
   async function onClickRead() {
-    fileValueRead = await api.readFile(dirName, fileNameRead);
+    fileValueRead = await api.loadFileText(dirName, fileNameRead);
   }
 
   async function onClickRemove() {
-    await api.remove(dirName, fileNameRemove);
+    await api.removeFile(dirName, fileNameRemove);
     fileNameRemove = '';
   }
 </script>
