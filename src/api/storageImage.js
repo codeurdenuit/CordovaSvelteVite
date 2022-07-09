@@ -32,13 +32,30 @@ export default {
       const reader = new FileReader();
       reader.onloadend = function() {
         console.log('Read completed.');
-        resolve(this.result);
+        const blob = new Blob([this.result]);
+        resolve(URL.createObjectURL(blob));
       };
       reader.onerror = function(e) {
         console.log('Read failed: ' + e.toString());
         reject(e);
       };
-      reader.readAsDataURL(file);
+      reader.readAsArrayBuffer(file);
+
+      // /*best method, but does not work with electronWhy ?!*/
+      // const blob = new Blob([file], {type: 'image/jpeg'});
+      // resolve(URL.createObjectURL(file));
+
+      // /*this method uses way too much memory ! to avoid !*/
+      // const reader = new FileReader();
+      // reader.onloadend = function() {
+      //   console.log('Read completed.');
+      //   resolve(this.result);
+      // };
+      // reader.onerror = function(e) {
+      //   console.log('Read failed: ' + e.toString());
+      //   reject(e);
+      // };
+      // reader.readAsDataURL(file);
     });
   },
 };
