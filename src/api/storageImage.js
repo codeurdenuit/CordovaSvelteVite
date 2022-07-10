@@ -10,7 +10,6 @@ export default {
       ],
     };
     const [fileHandle] = await window.showOpenFilePicker(options);
-    debugger;
     const file = await fileHandle.getFile();
     await this.creatFileImage(path, name, file);
   },

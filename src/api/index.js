@@ -1,6 +1,7 @@
 import storageImage from './storageImage';
 import storageText from './storageText';
 import storageMedia from './storageMedia';
+import storagePackage from './storagePackage';
 
 const root = {
 
@@ -15,9 +16,11 @@ const root = {
 
   async creatFile(path, name, file, type) {
     console.log('creatFile : ', path, name, file);
+    debugger;
     const fs = await this._requestFileSystem();
     const directoryEntry = await this._getDirectory(fs.root, path, {create: true});
     const fileEntry = await this._getFile(directoryEntry, name, {create: true, exclusive: false});
+    debugger;
     const writer = await this._createWriter(fileEntry);
     await this._writer(writer, file, {type});
   },
@@ -25,9 +28,14 @@ const root = {
   async loadFile(path, name) {
     console.log('readFile : ', path, name);
     const fs = await this._requestFileSystem();
-    const directoryEntry = await this._getDirectory(fs.root, path, {create: false});
-    const fileEntry = await this._getFile(directoryEntry, name, {create: false});
-    return await this._file(fileEntry);
+    if (name) {
+      const directoryEntry = await this._getDirectory(fs.root, path, {create: false});
+      const fileEntry = await this._getFile(directoryEntry, name, {create: false});
+      return await this._file(fileEntry);
+    } else {
+      const fileEntry = await this._getFile(fs.root, path, {create: false});
+      return await this._file(fileEntry);
+    }
   },
 
   async removeFile(path, name) {
@@ -98,4 +106,4 @@ const root = {
 
 };
 
-export default Object.assign(root, storageText, storageImage, storageMedia);
+export default Object.assign(root, storageText, storageImage, storageMedia, storagePackage);

@@ -13,7 +13,7 @@ export default {
 
   async creatFileText(path, name, file) {
     console.log('creatFileText : ', path, name);
-    return await creatFile(path, name, file, 'text/plain');
+    return await this.creatFile(path, name, file, 'text/plain');
   },
 
   _readAsText(file) {
