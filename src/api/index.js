@@ -1,5 +1,6 @@
 import storageImage from './storageImage';
 import storageText from './storageText';
+import storageMedia from './storageMedia';
 
 const root = {
 
@@ -39,7 +40,7 @@ const root = {
 
   _requestFileSystem() {
     return new Promise((resolve, reject) => {
-      window.requestFileSystem(window.PERSISTENT, 5*1024*1024, resolve, reject);
+      window.requestFileSystem(window.PERSISTENT, 100*1024*1024, resolve, reject);
     });
   },
 
@@ -97,4 +98,4 @@ const root = {
 
 };
 
-export default Object.assign(root, storageText, storageImage);
+export default Object.assign(root, storageText, storageImage, storageMedia);

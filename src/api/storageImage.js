@@ -4,13 +4,12 @@ export default {
       types: [
         {
           accept: {
-            'image/*': ['.png', '.jpeg', '.jpg']
+            'image/*': ['.png', '.jpeg', '.jpg'],
           },
         },
       ],
     };
-    let fileHandle;
-    [fileHandle] = await window.showOpenFilePicker(options);
+    const [fileHandle] = await window.showOpenFilePicker(options);
     debugger;
     const file = await fileHandle.getFile();
     await this.creatFileImage(path, name, file);

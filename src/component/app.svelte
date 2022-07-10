@@ -1,12 +1,13 @@
 <script>
 	import PocFile from './pocFile.svelte';
 	import PocImage from './pocImage.svelte';
+	import PocMedia from './pocMedia.svelte';
 </script>
 
 <h1>POC CORDOVA</h1>
 <PocFile />
 <PocImage />
-
+<PocMedia />
 
 <style type='scss' global >
 	.poc {
