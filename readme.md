@@ -61,3 +61,12 @@ if (false && require('./isChrome')()) {
 Fix compil Java
 https://github.com/apache/cordova-plugin-file-transfer/issues/306
 
+TODO
+(optional) Custom https://github.com/electron/asar/blob/main/lib/asar.js to pakage windows app
+
+
+(mandatory) find how to sign the recompiled apk witout java env
+
+
+
+

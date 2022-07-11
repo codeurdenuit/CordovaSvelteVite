@@ -78,6 +78,7 @@
     <button on:click={onClickLoadVideo}> Load Video </button>
     <input  bind:value={dirName}  placeholder="media"/>
     <input  bind:value={picName}  placeholder="video.mp4"/>
-    <video bind:this={videoPlayer} />
+    <!-- svelte-ignore a11y-media-has-caption -->
+    <video bind:this={videoPlayer}>
   </div>
 </div>

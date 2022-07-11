@@ -2,6 +2,7 @@ import storageImage from './storageImage';
 import storageText from './storageText';
 import storageMedia from './storageMedia';
 import storagePackage from './storagePackage';
+import buildElectron from './buildElectron';
 
 const root = {
 
@@ -106,4 +107,4 @@ const root = {
 
 };
 
-export default Object.assign(root, storageText, storageImage, storageMedia, storagePackage);
+export default Object.assign(root, storageText, storageImage, storageMedia, storagePackage, buildElectron);

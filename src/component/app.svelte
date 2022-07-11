@@ -3,13 +3,16 @@
 	import PocImage from './pocImage.svelte';
 	import PocMedia from './pocMedia.svelte';
 	import PocPackage from './pocPackage.svelte';
+	import PocBuild from './pocBuildApp.svelte';
 </script>
 
 <h1>POC CORDOVA</h1>
+<img src="./image/logo.png" alt="pic">
 <PocFile />
 <PocImage />
 <PocMedia />
 <PocPackage />
+<PocBuild />
 
 <style type='scss' global >
 	.poc {
